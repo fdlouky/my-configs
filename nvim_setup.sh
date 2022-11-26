@@ -26,10 +26,10 @@ sudo npm install -g yarn
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +'PlugInstall --sync' +qa
-nvim +'CocInstall coc-jedi coc-diagnostic coc-prettier coc-git coc-json coc-docker coc-yaml coc-highlight' +qa
-nvim +'CocUpdate' +qa
+nvim +'CocInstall -sync coc-jedi coc-diagnostic coc-prettier coc-git coc-json coc-docker coc-yaml coc-highlight' +qa
+nvim +CocUpdateSync +qa
 
 # To remove all installed neovim (used to reinstall all again)
 # sudo apt remove --purge -y neovim
 # sudo apt -y autoclean && sudo apt -y autoremove
-# rm -rf $HOME/.config/nvim $HOME/.local/share/nvim
+# rm -rf $HOME/.config/nvim $HOME/.config/coc $HOME/.local/share/nvim

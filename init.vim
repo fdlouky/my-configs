@@ -18,7 +18,7 @@ set cursorline  " Horizontal line in cursor position
 call plug#begin()
 
 Plug 'tpope/vim-surround' " Surrounding ysw)
-Plug 'kien/ctrlp.vim' " A fuzzy file finder
+Plug 'ctrlpvim/ctrlp.vim' " A fuzzy file finder
 Plug 'preservim/nerdtree' " NerdTree
 Plug 'tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'vim-airline/vim-airline' " Status bar
