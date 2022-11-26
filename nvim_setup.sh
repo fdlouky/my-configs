@@ -10,6 +10,12 @@ mkdir -p $HOME/.local/share/fonts
 sudo apt install fonts-powerline
 cd $HOME/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
 
+# Deactivate python virtualenv if activated and install jedi-language-server
+if [[ "${VIRTUAL_ENV}" ]]; then
+  deactivate
+fi
+pip3 install jedi-language-server
+
 # Install NeoVIm stuffs
 sudo apt install -y neovim exuberant-ctags nodejs npm
 sudo npm install -g npm@latest
