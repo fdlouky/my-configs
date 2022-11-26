@@ -7,5 +7,7 @@
     "--line-length",
     "79",
     "-S"
-  ]
+  ],
+  "pyright.inlayHints.variableTypes": false,
+  "pyright.inlayHints.functionReturnTypes": false
 }
