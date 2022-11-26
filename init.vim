@@ -25,7 +25,7 @@ Plug 'vim-airline/vim-airline' " Status bar
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine (autocompletion)
 Plug 'ryanoasis/vim-devicons' " Developer Icons
 Plug 'preservim/tagbar' " Tagbar for code navigation
-Plug 'terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+Plug 'mg979/vim-visual-multi', {'branch': 'master'} " CTRL + N for multiple cursors
 Plug 'vim-scripts/indentpython.vim'  " Auto-Indentation for python
 Plug 'APZelos/blamer.nvim' " Similar to GitLense
 Plug 'tmhedberg/matchit' " Switch to the begining and the end of a block by pressing %
