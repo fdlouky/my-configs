@@ -12,7 +12,10 @@ ln -s $dir/config $HOME/.config/terminator/config
 gsettings set org.gnome.shell.extensions.ding show-trash true
 
 # Python installations and other tools
+sudo apt install -y software-properties-common
+echo | sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update -y && sudo apt upgrade -y
+sudo apt install -y python3
 sudo apt install -y screen python-is-python3 python3-pip git curl linux-headers-generic build-essential dkms flake8 pylint
 pip3 install --upgrade pip
 pip3 install virtualenv virtualenvwrapper
