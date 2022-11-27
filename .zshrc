@@ -114,8 +114,9 @@ export PATH=/home/fd/.local/bin:$PATH
 
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
+export VIRTUALENVWRAPPER_VIRTUALENV=$(which virtualenv)
 export PROJECT_HOME=$HOME/IdeaProjects
-source $HOME/.local/bin/virtualenvwrapper.sh
+source $VIRTUALENVWRAPPER_SCRIPT
 
 typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=true
 

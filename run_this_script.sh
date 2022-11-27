@@ -19,8 +19,9 @@ sudo apt install -y python3
 sudo apt install -y screen python-is-python3 python3-pip git curl linux-headers-generic build-essential dkms flake8 pylint
 sudo apt -y install black
 pip3 install --upgrade pip
-pip3 install virtualenv virtualenvwrapper
+sudo apt install -y virtualenv virtualenvwrapper
 source $HOME/.bashrc
+echo "pip3 install --upgrade pip && pip3 install pynvim" >> $WORKON_HOME/postmkvirtualenv
 
 # Uncomment following to solve WiFi driver issue in Lenovo
 # git clone https://github.com/Mange/rtl8192eu-linux-driver $HOME
