@@ -103,6 +103,9 @@ au BufNewFile,BufRead *.py
 highlight default BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
+" Highlight inlay type hints for python
+hi CocInlayHint ctermbg=0 ctermfg=8
+
 " Show venv in airline
 let g:airline#extensions#virtualenv#enabled = 1
 

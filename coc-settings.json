@@ -9,6 +9,6 @@
     "79",
     "-S"
   ],
-  "pyright.inlayHints.variableTypes": false,
-  "pyright.inlayHints.functionReturnTypes": false
+  "pyright.inlayHints.variableTypes": true,
+  "pyright.inlayHints.functionReturnTypes": true
 }
