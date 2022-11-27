@@ -100,6 +100,7 @@ au BufNewFile,BufRead *.py
     \| set fileformat=unix
 
 " Color leading and trailing whitespaces
+" highlight BadWhitespace ctermfg=16 ctermbg=253 guifg=#000000 guibg=#F8F8F0
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Show venv in airline
