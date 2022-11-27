@@ -39,6 +39,10 @@ set encoding=UTF-8
 
 call plug#end()
 
+" Themes
+set background=dark
+colorscheme codedark
+let g:airline_theme = 'dark'
 
 " Move line or visually selected block - alt+j/k
 inoremap <A-j> <Esc>:m .+1<CR>==gi
@@ -72,10 +76,6 @@ nmap <F7> :TagbarToggle<CR>
 " For No Previews
 set completeopt-=preview
 
-" Themes
-set background=dark
-colorscheme codedark
-let g:airline_theme = 'dark'
 
 " Airline configs
 let g:airline_powerline_fonts = 1
