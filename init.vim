@@ -33,15 +33,27 @@ Plug 'sheerun/vim-polyglot' " Better syntax-highlighting for filetypes in vim
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'jiangmiao/auto-pairs' " Auto-close braces and scopes
 Plug 'jmcantrell/vim-virtualenv' " To show venv in vim-airline (bottom bar)
-Plug 'tomasiser/vim-code-dark'
+Plug 'tomasiser/vim-code-dark' " Theme codedark
+Plug 'sainnhe/everforest' " Theme everforest
 
 set encoding=UTF-8
 
 call plug#end()
 
-" Themes
+" Theme: codedark
 set background=dark
+let g:codedark_conservative=1 " If you don't like many colors and prefer the conservative style of the standard Visual Studio
+let g:codedark_italics=1 " Activates italicized comments (make sure your terminal supports italics)
+" let g:codedark_transparent=1 " Make the background transparent
+" let g:airline_theme = 'codedark' " If you have vim-airline, you can also enable the provided theme
 colorscheme codedark
+
+" Theme: everforest (best for eyes)
+" let g:everforest_background = 'hard' " Available values: 'hard', 'medium'(default), 'soft'
+" let g:everforest_better_performance = 1 " For better performance
+" colorscheme everforest
+
+" Airline theme
 let g:airline_theme = 'dark'
 
 " Move line or visually selected block - alt+j/k
@@ -93,7 +105,7 @@ let g:airline_symbols.linenr = ''
 " Gitlens
 let g:blamer_enabled = 1
 
-" Specifi configs por python files
+" Specific configs por python files
 au BufNewFile,BufRead *.py
     \| set textwidth=79
     \| set expandtab
