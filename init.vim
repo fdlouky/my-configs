@@ -34,7 +34,6 @@ Plug 'tpope/vim-fugitive' " Git integration
 Plug 'jiangmiao/auto-pairs' " Auto-close braces and scopes
 Plug 'jmcantrell/vim-virtualenv' " To show venv in vim-airline (bottom bar)
 Plug 'tomasiser/vim-code-dark'
-Plug 'bitc/vim-bad-whitespace' " Highlight bad whitespaces
 
 set encoding=UTF-8
 
@@ -101,8 +100,8 @@ au BufNewFile,BufRead *.py
     \| set fileformat=unix
 
 " Color leading and trailing whitespaces
-" highlight BadWhitespace ctermfg=16 ctermbg=253 guifg=#000000 guibg=#F8F8F0
-" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+highlight default BadWhitespace ctermbg=red guibg=red
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Show venv in airline
 let g:airline#extensions#virtualenv#enabled = 1
