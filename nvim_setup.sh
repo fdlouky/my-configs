@@ -12,19 +12,21 @@ cd $HOME/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Fon
 
 # Install NeoVIm stuffs
 sudo apt install -y exuberant-ctags nodejs
-echo | sudo add-apt-repository ppa:neovim-ppa/stable -y
-sudo apt-get update
-sudo apt install neovim -y
 # Uncomment following lines if npm is not included in nodejs installation
 # sudo apt install -fy npm
 # sudo npm install -g npm@latest
 # sudo npm cache clean -f
 # sudo npm install -g n
 # sudo n stable
+sudo npm install -g npm
 sudo npm install -g yarn
+echo | sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt-get update
+sudo apt install neovim -y
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +'PlugInstall --sync' +qa
+nvim +'UpdateRemotePlugins' +qa
 nvim +'CocInstall -sync coc-pyright coc-prettier coc-git coc-json coc-docker coc-yaml coc-highlight' +qa
 nvim +CocUpdateSync +qa
 
