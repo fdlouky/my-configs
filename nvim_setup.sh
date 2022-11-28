@@ -11,7 +11,10 @@ sudo apt install fonts-powerline
 cd $HOME/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
 
 # Install NeoVIm stuffs
-sudo apt install -y neovim exuberant-ctags nodejs
+sudo apt install -y exuberant-ctags nodejs
+echo | sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt-get update
+sudo apt install neovim -y
 # Uncomment following lines if npm is not included in nodejs installation
 # sudo apt install -fy npm
 # sudo npm install -g npm@latest
