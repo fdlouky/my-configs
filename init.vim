@@ -19,11 +19,9 @@ call plug#begin()
 
 Plug 'tpope/vim-surround' " Surrounding ysw)
 Plug 'ctrlpvim/ctrlp.vim' " A fuzzy file finder
-Plug 'preservim/nerdtree' " NerdTree
 Plug 'tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'vim-airline/vim-airline' " Status bar
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine (autocompletion)
-Plug 'ryanoasis/vim-devicons' " Developer Icons
 Plug 'preservim/tagbar' " Tagbar for code navigation
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " CTRL + N for multiple cursors
 Plug 'vim-scripts/indentpython.vim'  " Auto-Indentation for python
@@ -34,6 +32,15 @@ Plug 'jiangmiao/auto-pairs' " Auto-close braces and scopes
 Plug 'jmcantrell/vim-virtualenv' " To show venv in vim-airline (bottom bar)
 Plug 'tomasiser/vim-code-dark' " Theme codedark
 Plug 'sainnhe/everforest' " Theme everforest
+
+" NERDTree
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin' " Shows Git status flags for files and folders in NERDTree.
+Plug 'ryanoasis/vim-devicons' " Adds filetype-specific icons to NERDTree files and folders,
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Adds syntax highlighting to NERDTree based on filetype.
+" Plug 'scrooloose/nerdtree-project-plugin' " Saves and restores the state of the NERDTree between sessions.
+" Plug 'PhilRunninger/nerdtree-buffer-ops' " 1) Highlights open files in a different color. 2) Closes a buffer directly from NERDTree. -> incompatible with nerdtree-git-plugin and vim-devicons
+Plug 'PhilRunninger/nerdtree-visual-selection' " Enables NERDTree to open, delete, move, or copy multiple Visually-selected files at once.
 
 " Syntax highlight plugins
 Plug 'numirias/semshi'
