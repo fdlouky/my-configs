@@ -29,12 +29,17 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'} " CTRL + N for multiple curs
 Plug 'vim-scripts/indentpython.vim'  " Auto-Indentation for python
 Plug 'APZelos/blamer.nvim' " Similar to GitLense
 Plug 'tmhedberg/matchit' " Switch to the begining and the end of a block by pressing %
-Plug 'sheerun/vim-polyglot' " Better syntax-highlighting for filetypes in vim
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'jiangmiao/auto-pairs' " Auto-close braces and scopes
 Plug 'jmcantrell/vim-virtualenv' " To show venv in vim-airline (bottom bar)
 Plug 'tomasiser/vim-code-dark' " Theme codedark
 Plug 'sainnhe/everforest' " Theme everforest
+
+" Syntax highlight plugins
+Plug 'numirias/semshi'
+" Plug 'sheerun/vim-polyglot' " Better syntax-highlighting for filetypes in vim
+" Plug 'vim-python/python-syntax'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " After installing the pluging -> :TSInstall python
 
 set encoding=UTF-8
 
@@ -44,7 +49,7 @@ call plug#end()
 set background=dark
 let g:codedark_conservative=1 " If you don't like many colors and prefer the conservative style of the standard Visual Studio
 let g:codedark_italics=1 " Activates italicized comments (make sure your terminal supports italics)
-" let g:codedark_transparent=1 " Make the background transparent
+" let g:codedark_transparent=1 " Make the background transparent (totally dark)
 " let g:airline_theme = 'codedark' " If you have vim-airline, you can also enable the provided theme
 colorscheme codedark
 
