@@ -41,8 +41,6 @@ Plug 'romgrk/barbar.nvim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin' " Shows Git status flags for files and folders in NERDTree.
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Adds syntax highlighting to NERDTree based on filetype.
-" Plug 'scrooloose/nerdtree-project-plugin' " Saves and restores the state of the NERDTree between sessions.
-" Plug 'PhilRunninger/nerdtree-buffer-ops' " 1) Highlights open files in a different color. 2) Closes a buffer directly from NERDTree. -> incompatible with nerdtree-git-plugin and vim-devicons
 Plug 'PhilRunninger/nerdtree-visual-selection' " Enables NERDTree to open, delete, move, or copy multiple Visually-selected files at once.
 
 " Icons
