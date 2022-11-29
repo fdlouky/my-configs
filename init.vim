@@ -18,7 +18,6 @@ set cursorline  " Horizontal line in cursor position
 call plug#begin()
 
 Plug 'tpope/vim-surround' " Surrounding ysw)
-Plug 'ctrlpvim/ctrlp.vim' " A fuzzy file finder
 Plug 'tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'vim-airline/vim-airline' " Status bar
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine (autocompletion)
@@ -34,7 +33,12 @@ Plug 'tomasiser/vim-code-dark' " Theme codedark
 Plug 'sainnhe/everforest' " Theme everforest
 Plug 'lukas-reineke/indent-blankline.nvim' " This plugin adds indentation guides to all lines (including empty lines)
 
-"Pretty Tabs
+" Fuzzy finder
+" Plug 'ctrlpvim/ctrlp.vim' " A fuzzy file finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Pretty Tabs
 Plug 'romgrk/barbar.nvim'
 
 " NERDTree
