@@ -103,15 +103,17 @@ nnoremap <F12> :call CocAction('jumpDefinition', 'tab drop')<CR>
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 
-" Error and warning list
+" Error and warning list. Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nnoremap <F8> :CocDiagnostic<CR>
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Tagbar
 nmap <F7> :TagbarToggle<CR>
 
 " For No Previews
 set completeopt-=preview
-
 
 " Airline configs
 let g:airline_powerline_fonts = 1
@@ -138,7 +140,6 @@ au BufNewFile,BufRead *.py
 " Color leading and trailing whitespaces
 highlight default BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
 
 " Show venv in airline
 let g:airline#extensions#virtualenv#enabled = 1
@@ -191,12 +192,6 @@ tnoremap <A-t> <C-\><C-n>:call TermToggle(6)<CR>
 " Terminal go back to normal mode
 tnoremap <Esc> <C-\><C-n>
 tnoremap :q! <C-\><C-n>:q!<CR>
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
 
 " babar keymapping
 " Move to previous/next
