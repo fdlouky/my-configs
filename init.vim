@@ -148,6 +148,7 @@ command Format :call CocAction('format') " format document
 
 " Highlight all matching tokens under cursor -> coc-highlight
 autocmd CursorHold * silent call CocActionAsync('highlight')
+set updatetime=300 " Make coc-highlight faster
 
 " Config for autocompletion from https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#use-tab-or-custom-key-for-trigger-completion
 " Use <cr> to confirm completion
