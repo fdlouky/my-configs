@@ -29,9 +29,12 @@ Plug 'tmhedberg/matchit' " Switch to the begining and the end of a block by pres
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'jiangmiao/auto-pairs' " Auto-close braces and scopes
 Plug 'jmcantrell/vim-virtualenv' " To show venv in vim-airline (bottom bar)
+Plug 'lukas-reineke/indent-blankline.nvim' " This plugin adds indentation guides to all lines (including empty lines)
+
+" Themes (colorschemes)
 Plug 'tomasiser/vim-code-dark' " Theme codedark
 Plug 'sainnhe/everforest' " Theme everforest
-Plug 'lukas-reineke/indent-blankline.nvim' " This plugin adds indentation guides to all lines (including empty lines)
+Plug 'jamespwilliams/bat.vim'
 
 " Fuzzy finder
 " Plug 'ctrlpvim/ctrlp.vim' " A fuzzy file finder
@@ -73,6 +76,10 @@ colorscheme codedark
 " let g:everforest_background = 'hard' " Available values: 'hard', 'medium'(default), 'soft'
 " let g:everforest_better_performance = 1 " For better performance
 " colorscheme everforest
+
+" Theme bat
+" set termguicolors
+" colorscheme bat
 
 " Airline theme
 let g:airline_theme = 'dark'
