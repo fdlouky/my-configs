@@ -34,14 +34,20 @@ Plug 'tomasiser/vim-code-dark' " Theme codedark
 Plug 'sainnhe/everforest' " Theme everforest
 Plug 'lukas-reineke/indent-blankline.nvim' " This plugin adds indentation guides to all lines (including empty lines)
 
+"Pretty Tabs
+Plug 'romgrk/barbar.nvim'
+
 " NERDTree
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin' " Shows Git status flags for files and folders in NERDTree.
-Plug 'ryanoasis/vim-devicons' " Adds filetype-specific icons to NERDTree files and folders,
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Adds syntax highlighting to NERDTree based on filetype.
 " Plug 'scrooloose/nerdtree-project-plugin' " Saves and restores the state of the NERDTree between sessions.
 " Plug 'PhilRunninger/nerdtree-buffer-ops' " 1) Highlights open files in a different color. 2) Closes a buffer directly from NERDTree. -> incompatible with nerdtree-git-plugin and vim-devicons
 Plug 'PhilRunninger/nerdtree-visual-selection' " Enables NERDTree to open, delete, move, or copy multiple Visually-selected files at once.
+
+" Icons
+Plug 'ryanoasis/vim-devicons' " Adds filetype-specific icons to NERDTree files and folders,
+Plug 'nvim-tree/nvim-web-devicons' " for barbar plugin
 
 " Syntax highlight plugins
 Plug 'numirias/semshi'
@@ -73,7 +79,8 @@ let g:airline_theme = 'dark'
 hi CocInlayHint ctermbg=0 ctermfg=8
 
 " Highlight active tab
-hi TabLineSel gui=NONE guibg=#3e4452 guifg=#abb2bf cterm=NONE term=NONE ctermfg=black ctermbg=white
+" hi TabLineSel gui=NONE guibg=#3e4452 guifg=#abb2bf cterm=NONE term=NONE ctermfg=black ctermbg=white
+" hi BufferCurrent ctermfg=18 ctermbg=236 guifg=#d4d4d4 guibg=#1e1e1e " -> problems with icon background
 
 " Move line or visually selected block - alt+j/k
 inoremap <A-j> <Esc>:m .+1<CR>==gi
