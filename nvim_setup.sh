@@ -27,7 +27,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +'PlugInstall --sync' +qa
 nvim +'UpdateRemotePlugins' +qa
-nvim +'CocInstall -sync coc-pyright coc-prettier coc-git coc-json coc-docker coc-yaml coc-highlight' +qa
+nvim +'CocInstall -sync coc-pyright coc-prettier coc-git coc-json coc-docker coc-yaml coc-highlight coc-sql' +qa
 nvim +CocUpdateSync +qa
 
 # To remove all installed neovim (used to reinstall all again)
