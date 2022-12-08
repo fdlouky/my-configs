@@ -33,7 +33,7 @@ nvim +CocUpdateSync +qa
 # To remove all installed neovim (used to reinstall all again)
 # sudo apt remove --purge -y neovim
 # sudo apt -y autoclean && sudo apt -y autoremove
-# rm -rf $HOME/.config/nvim $HOME/.config/coc $HOME/.local/share/nvim
+# rm -rf $HOME/.config/nvim $HOME/.config/coc $HOME/.local/share/nvim $HOME/.cache/nvim
 
 # To remove all related nodejs and npm
 # sudo apt --purge remove nodejs npm
