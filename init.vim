@@ -204,7 +204,7 @@ tnoremap <A-t> <C-\><C-n>:call TermToggle(6)<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap :q! <C-\><C-n>:q!<CR>
 
-" babar keymapping
+" barbar keymapping
 " Move to previous/next
 nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
 nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
