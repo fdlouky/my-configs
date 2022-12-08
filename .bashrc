@@ -116,10 +116,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH=/home/fd/.local/bin:$PATH
+export PATH=/home/$USER/.local/bin:$PATH
 
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
 export VIRTUALENVWRAPPER_VIRTUALENV=$(which virtualenv)
-export PROJECT_HOME=$HOME/IdeaProjects
+export PROJECT_HOME=$HOME/pipprojects
 source $HOME/.local/bin/virtualenvwrapper.sh
