@@ -177,7 +177,8 @@ let g:term_buf = 0
 let g:term_win = 0
 function! TermToggle(height)
     if win_gotoid(g:term_win)
-        hide
+        " hide
+		:bd!
     else
         botright new
         exec "resize " . a:height
