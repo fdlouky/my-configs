@@ -124,3 +124,4 @@ bindkey \^U backward-kill-line
 alias pip='noglob pip'
 
 bindkey 'ñ' forward-word
+bindkey 'ç' autosuggest-accept

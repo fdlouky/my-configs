@@ -1,6 +1,6 @@
 [global_config]
 [keybindings]
-  layout_launcher =
+  layout_launcher = ""
 [profiles]
   [[default]]
     cursor_color = "#aaaaaa"
