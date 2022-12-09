@@ -94,6 +94,10 @@ hi CocInlayHint ctermbg=0 ctermfg=8
 " hi TabLineSel gui=NONE guibg=#3e4452 guifg=#abb2bf cterm=NONE term=NONE ctermfg=black ctermbg=white
 " hi BufferCurrent ctermfg=18 ctermbg=236 guifg=#d4d4d4 guibg=#1e1e1e " -> problems with icon background
 
+" Exit insert mode
+inoremap jk <esc>
+inoremap kj <esc>
+
 " Move line or visually selected block - alt+j/k
 inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
