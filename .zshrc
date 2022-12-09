@@ -122,3 +122,5 @@ typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=true
 
 bindkey \^U backward-kill-line
 alias pip='noglob pip'
+
+bindkey 'ñ' forward-word
