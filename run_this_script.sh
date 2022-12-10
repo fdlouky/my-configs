@@ -70,5 +70,13 @@ systemctl --user restart pipewire
 # Uncomment following to show audio info
 # pactl info
 
+# Configure ImprPant as shortcut for flameshot
+BEGINNING="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybindings:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$KEY_PATH/custom0/']"
+$BEGINNING/custom0/ name "Take screenshot with flameshot"
+$BEGINNING/custom0/ command "/usr/bin/flameshot gui"
+$BEGINNING/custom0/ binding "Print"
+
 # Install and setup NeoVim
 bash $dir/nvim_setup.sh
