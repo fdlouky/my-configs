@@ -19,7 +19,7 @@ sudo apt install -y python3
 sudo apt install -y screen python-is-python3 python3-pip git curl linux-headers-generic build-essential dkms flake8 pylint
 sudo apt -y install black
 pip3 install --upgrade pip
-sudo apt install -y virtualenv virtualenvwrapper
+pip3 install virtualenv virtualenvwrapper
 source $HOME/.bashrc
 echo "pip3 install --upgrade pip && pip3 install pynvim" >> $WORKON_HOME/postmkvirtualenv
 
@@ -40,7 +40,8 @@ curl -o code.deb -L http://go.microsoft.com/fwlink/?LinkID=760868
 sudo dpkg -i code.deb
 sudo snap install intellij-idea-community --classic
 sudo snap install pycharm-community --classic
-sudo apt install -y copyq terminator tmux xclip flameshot vlc dbeaver-ce docker
+sudo apt install -y copyq terminator tmux xclip flameshot vlc 
+sudo snap install dbeaver-ce
 sudo snap install --edge filezilla
 sudo snap install slack --classic
 echo | sudo add-apt-repository ppa:obsproject/obs-studio
@@ -71,12 +72,15 @@ systemctl --user restart pipewire
 # pactl info
 
 # Configure ImprPant as shortcut for flameshot
-BEGINNING="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybindings:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+BEGINNING="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+gsettings set org.gnome.shell.keybindings show-screenshot-ui "['']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$KEY_PATH/custom0/']"
 $BEGINNING/custom0/ name "Take screenshot with flameshot"
 $BEGINNING/custom0/ command "/usr/bin/flameshot gui"
 $BEGINNING/custom0/ binding "Print"
+# Set <Super>t to open terminal
+gsettings set org.gnome.settings-daemon.plugins.media-keys terminal ['<Super>t']
 
 # Install and setup NeoVim
 bash $dir/nvim_setup.sh
