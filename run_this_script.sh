@@ -25,7 +25,7 @@ select yn in "yes" "no"; do
 			pip3 install --upgrade pip
 			pip3 install virtualenv virtualenvwrapper
 			source $HOME/.bashrc
-			cp postmkvirtualenv $WORKON_HOME
+			cp -f postmkvirtualenv $WORKON_HOME
 			break;;
 		no ) break;;
 	esac
@@ -116,7 +116,7 @@ select yn in "yes" "no"; do
 			$BEGINNING/custom0/ command "/usr/bin/flameshot gui"
 			$BEGINNING/custom0/ binding "Print"
 			# Set <Super>t to open terminal
-			gsettings set org.gnome.settings-daemon.plugins.media-keys terminal ['<Super>t']
+			gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>t']"
 			break;;
 		no ) break;;
 	esac
