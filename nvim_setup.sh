@@ -21,13 +21,13 @@ sudo apt install -y exuberant-ctags nodejs
 echo "is npm is included in nodejs installation?"
 select yn in "yes" "no"; do
 	case $yn in
-		yes ) sudo apt install -fy npm
+		no ) sudo apt install -fy npm
 			sudo npm install -g npm@latest
 			sudo npm cache clean -f
 			sudo npm install -g n
 			sudo n stable
 			break;;
-		no ) break;;
+		yes ) break;;
 	esac
 done
 sudo npm install -g npm
