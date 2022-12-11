@@ -21,7 +21,7 @@ sudo apt -y install black
 pip3 install --upgrade pip
 pip3 install virtualenv virtualenvwrapper
 source $HOME/.bashrc
-echo "pip3 install --upgrade pip && pip3 install pynvim" >> $WORKON_HOME/postmkvirtualenv
+cp postmkvirtualenv $WORKON_HOME
 
 # Uncomment following to solve WiFi driver issue in Lenovo
 # git clone https://github.com/Mange/rtl8192eu-linux-driver $HOME
