@@ -34,7 +34,8 @@ done
 echo "Solve Wifi drivers? (Lenovo issue)"
 select yn in "yes" "no"; do
 	case $yn in
-		yes ) git clone https://github.com/Mange/rtl8192eu-linux-driver $HOME
+		yes ) sudo apt install -y git linux-headers-generic build-essential dkms
+			git clone https://github.com/Mange/rtl8192eu-linux-driver $HOME
 			sudo dkms add $HOME/rtl8192eu-linux-driver
 			sudo dkms install $HOME/rtl8192eu-linux-driver/rtl8192eu/1.0
 			echo "blacklist rtl8xxxu" | sudo tee /etc/modprobe.d/rtl8xxxu.conf
