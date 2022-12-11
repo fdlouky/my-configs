@@ -84,3 +84,20 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys terminal ['<Super>t']
 
 # Install and setup NeoVim
 bash $dir/nvim_setup.sh
+
+# Install docker and docker-compose
+# Docker
+sudo apt install apt-transport-https ca-certificates gnupg lsb-release
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install docker-ce
+# Docker Compose
+get_latest_release() {
+  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+    grep '"tag_name":' |                                            # Get tag line
+    sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
+}
+LATEST=$(get_latest_release docker/compose)
+sudo curl -L https://github.com/docker/compose/releases/download/$LATEST/docker-compose-`uname -s`-aarch64 -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
