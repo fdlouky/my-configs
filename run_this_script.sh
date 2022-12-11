@@ -140,11 +140,11 @@ done
 echo "Install docker and docker-compose?"
 select yn in "yes" "no"; do
 	case $yn in
-		yes ) sudo apt install apt-transport-https ca-certificates gnupg lsb-release
+		yes ) sudo apt install -y apt-transport-https ca-certificates gnupg lsb-release
 			curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 			echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 			sudo apt update
-			sudo apt install docker-ce
+			sudo apt install -y docker-ce
 			# Docker Compose
 			get_latest_release() {
 			  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
