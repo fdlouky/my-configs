@@ -18,12 +18,18 @@ cd $HOME/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Fon
 
 # Install NeoVIm stuffs
 sudo apt install -y exuberant-ctags nodejs
-# Uncomment following lines if npm is not included in nodejs installation
-# sudo apt install -fy npm
-# sudo npm install -g npm@latest
-# sudo npm cache clean -f
-# sudo npm install -g n
-# sudo n stable
+echo "is npm is included in nodejs installation?"
+select yn in "yes" "no"; do
+	case $yn in
+		yes ) sudo apt install -fy npm
+			sudo npm install -g npm@latest
+			sudo npm cache clean -f
+			sudo npm install -g n
+			sudo n stable
+			break;;
+		no ) break;;
+	esac
+done
 sudo npm install -g npm
 sudo npm install -g yarn
 echo | sudo add-apt-repository ppa:neovim-ppa/stable -y
