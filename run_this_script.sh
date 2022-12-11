@@ -19,6 +19,8 @@ select yn in "yes" "no"; do
 			sudo apt update -y && sudo apt upgrade -y
 			sudo apt install -y python3
 			sudo apt install -y screen python-is-python3 python3-pip git curl linux-headers-generic build-essential dkms flake8 pylint
+			git config --global user.name fdlouky
+			git config --global user.email fmdlouky@gmail.com
 			sudo apt -y install black
 			pip3 install --upgrade pip
 			pip3 install virtualenv virtualenvwrapper
