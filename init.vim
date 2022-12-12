@@ -114,6 +114,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Copy to system clipboard with Ctrl+Shift+c
+vnoremap <C-C> "+y
+
 " NerdTree shortcuts and some icon configs
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
