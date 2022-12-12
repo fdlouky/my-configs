@@ -183,9 +183,9 @@ echoMessage "\nCreate SSH to connect Github or Bitbucket?"
 select yn in "yes" "no"; do
 	case $yn in
 		yes ) ssh-keygen -t ed25519 -C fmdlouky@gmail.com
-			ssh-add ~/.ssh/id_ed25519
+			ssh-add $HOME/.ssh/id_ed25519
 			echoMessage "\nCopy and paste ssh public key in github or bitbucket account (it was generated for fmdlouky@gmail.com)"
-			cat ~/.ssh/id_ed25519.pub
+			cat $HOME/.ssh/id_ed25519.pub
 			echoWarning "\nWARNING! this pub key was generated for fmdlouky@gmail.com"
 			break;;
 		no ) break;;
