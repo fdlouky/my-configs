@@ -25,8 +25,9 @@ ln -sf $dir/.zshrc $HOME/.zshrc
 ln -sf $dir/.p10k.zsh $HOME/.p10k.zsh
 ln -sf $dir/config $HOME/.config/terminator/config
 
-# Show trash in desktop
+# Show trash in desktop and remove from dock
 gsettings set org.gnome.shell.extensions.ding show-trash true
+gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
 
 echoMessage "\nInstall Python and other tools?"
 select yn in "yes" "no"; do
