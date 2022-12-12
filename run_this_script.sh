@@ -187,7 +187,7 @@ select yn in "yes" "no"; do
 			echoMessage "\nCopy and paste ssh public key in github or bitbucket account (it was generated for fmdlouky@gmail.com)"
 			cat $HOME/.ssh/id_ed25519.pub
 			echoWarning "\nWARNING! this pub key was generated for fmdlouky@gmail.com"
-			echoWarning '\n Please be sure that you have an ssh repository (instead of an https)!!!"
+			echoWarning "\n Please be sure that you have an ssh repository (instead of an https)!!!"
 			break;;
 		no ) break;;
 	esac
