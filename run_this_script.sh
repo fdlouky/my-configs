@@ -1,4 +1,21 @@
 #!/bin/bash
+terminalColorClear='\033[0m'
+terminalColorEmphasis='\033[1;32m'
+terminalColorError='\033[1;31m'
+terminalColorMessage='\033[1;33m'
+terminalColorWarning='\033[1;34m'
+echoDefault() {
+    echo -e "${terminalColorClear}$1${terminalColorClear}"
+}
+echoMessage() {
+    echo -e "${terminalColorMessage}$1${terminalColorClear}"
+}
+echoWarning() {
+    echo -e "${terminalColorWarning}$1${terminalColorClear}"
+}
+echoError() {
+    echo -e "${terminalColorError}$1${terminalColorClear}"
+}
 
 # Link my configurations
 my_user=$(whoami)
@@ -11,7 +28,7 @@ ln -sf $dir/config $HOME/.config/terminator/config
 # Show trash in desktop
 gsettings set org.gnome.shell.extensions.ding show-trash true
 
-echo "Install Python and other tools?"
+echoMessage "\nInstall Python and other tools?"
 select yn in "yes" "no"; do
 	case $yn in
 		yes ) sudo apt install -y software-properties-common
@@ -32,7 +49,7 @@ select yn in "yes" "no"; do
 	esac
 done
 
-echo "Solve Wifi drivers? (Lenovo issue)"
+echoMessage "\nSolve Wifi drivers? (Lenovo issue)"
 select yn in "yes" "no"; do
 	case $yn in
 		yes ) sudo apt install -y git linux-headers-generic build-essential dkms
@@ -50,7 +67,7 @@ select yn in "yes" "no"; do
 	esac
 done
 
-echo "Install basic tools?"
+echoMessage "\nInstall basic tools?"
 select yn in "yes" "no"; do
 	case $yn in
 		yes ) cd $HOME/Downloads
@@ -72,7 +89,7 @@ select yn in "yes" "no"; do
 done
 cd $dir
 
-echo "Install my favorite terminal?"
+echoMessage "\nInstall my favorite terminal?"
 select yn in "yes" "no"; do
 	case $yn in
 		yes ) sudo apt install -y zsh
@@ -87,7 +104,7 @@ select yn in "yes" "no"; do
 done
 
 
-echo "Solve Bose Mic issues?"
+echoMessage "\nSolve Bose Mic issues?"
 select yn in "yes" "no"; do
 	case $yn in
 		yes ) echo | sudo add-apt-repository ppa:pipewire-debian/pipewire-upstream
@@ -109,7 +126,7 @@ select yn in "yes" "no"; do
 done
 
 
-echo "Configure ImprPant as shortcut for flameshot"
+echoMessage "\nConfigure ImprPant as shortcut for flameshot"
 select yn in "yes" "no"; do
 	case $yn in
 		yes ) BEGINNING="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
@@ -128,8 +145,7 @@ done
 
 
 # Install and setup NeoVim
-
-echo "Install and setup NeoVim?"
+echoMessage "\nInstall and setup NeoVim?"
 select yn in "yes" "no"; do
 	case $yn in
 		yes ) bash $dir/nvim_setup.sh
@@ -140,8 +156,7 @@ done
 
 
 # Install docker and docker-compose
-# Docker
-echo "Install docker and docker-compose?"
+echoMessage "\nInstall docker and docker-compose?"
 select yn in "yes" "no"; do
 	case $yn in
 		yes ) sudo apt install -y apt-transport-https ca-certificates gnupg lsb-release
@@ -162,3 +177,18 @@ select yn in "yes" "no"; do
 		no ) break;;
 	esac
 done
+
+# Create SSH to connect Github
+echoMessage "\nCreate SSH to connect Github or Bitbucket?"
+select yn in "yes" "no"; do
+	case $yn in
+		yes ) ssh-keygen -t ed25519 -C fmdlouky@gmail.com
+			ssh-add ~/.ssh/id_ed25519
+			echoMessage "\nCopy and paste ssh public key in github or bitbucket account (it was generated for fmdlouky@gmail.com)"
+			cat ~/.ssh/id_ed25519.pub
+			echoWarning "\nWARNING! this pub key was generated for fmdlouky@gmail.com"
+			break;;
+		no ) break;;
+	esac
+done
+
