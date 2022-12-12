@@ -257,3 +257,6 @@ nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
 " Other:
 " :BarbarEnable - enables barbar (enabled by default)
 " :BarbarDisable - very bad command, should never be used
+
+" Tabout
+inoremap <expr> <Tab> search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<Tab>'
