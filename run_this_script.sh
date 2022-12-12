@@ -24,6 +24,7 @@ select yn in "yes" "no"; do
 			sudo apt -y install black
 			pip3 install --upgrade pip
 			pip3 install virtualenv virtualenvwrapper
+			source $HOME/.local/bin/virtualenvwrapper.sh
 			source $HOME/.bashrc
 			cp -f postmkvirtualenv $WORKON_HOME
 			break;;
