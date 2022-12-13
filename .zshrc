@@ -125,3 +125,7 @@ alias pip='noglob pip'
 
 bindkey 'ñ' forward-word
 bindkey '´' autosuggest-accept
+
+# Configure FZF.
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+export FZF_DEFAULT_OPTS="--color=dark"
