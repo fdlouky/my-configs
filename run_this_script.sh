@@ -79,7 +79,7 @@ select yn in "yes" "no"; do
 			sudo dpkg -i code.deb
 			sudo snap install intellij-idea-community --classic
 			sudo snap install pycharm-community --classic
-			sudo apt install -y copyq terminator tmux xclip flameshot vlc 
+			sudo apt install -y copyq terminator tmux xclip flameshot vlc fzf
 			sudo snap install dbeaver-ce
 			sudo snap install --edge filezilla
 			sudo snap install slack --classic
