@@ -37,7 +37,7 @@ select yn in "yes" "no"; do
 			echo | sudo add-apt-repository ppa:deadsnakes/ppa
 			sudo apt update -y && sudo apt upgrade -y
 			sudo apt install -y python3
-			sudo apt install -y screen python-is-python3 python3-pip git curl linux-headers-generic build-essential dkms flake8 pylint
+			sudo apt install -y screen python-is-python3 python3-pip git gitk curl linux-headers-generic build-essential dkms flake8 pylint
 			git config --global user.name fdlouky
 			git config --global user.email fmdlouky@gmail.com
 			sudo apt -y install black
