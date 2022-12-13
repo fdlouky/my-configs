@@ -20,6 +20,7 @@ echoError() {
 # Link my configurations
 my_user=$(whoami)
 dir=$PWD
+mkdir -p $HOME/pipprojects
 ln -sf $dir/.bashrc $HOME/.bashrc
 ln -sf $dir/.zshrc $HOME/.zshrc
 ln -sf $dir/.p10k.zsh $HOME/.p10k.zsh
