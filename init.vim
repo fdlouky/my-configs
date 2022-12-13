@@ -121,8 +121,8 @@ nnoremap <C-l> <C-w>l
 nnoremap <Leader>r :%s///g<Left><Left>
 nnoremap <Leader>rc :%s///gc<Left><Left><Left>
 " Replace highlighet text in visual mode
-vnoremap <Leader>r :%s///g<Left><Left>
-vnoremap <Leader>rc :%s///gc<Left><Left><Left>
+xnoremap <Leader>r :%s///g<Left><Left>
+xnoremap <Leader>rc :%s///gc<Left><Left><Left>
 
 " Type a replacement term and press . to repeat the replacement again. Useful
 " for replacing a few instances of the term (comparable to multiple cursors).
