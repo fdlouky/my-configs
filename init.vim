@@ -34,6 +34,9 @@ Plug 'lukas-reineke/indent-blankline.nvim' " This plugin adds indentation guides
 " Fold code
 Plug 'tmhedberg/SimpylFold'
 
+" Modify * to also work with visuale selections
+Plug 'nelstrom/vim-visual-star-search'
+
 " Themes (colorschemes)
 Plug 'tomasiser/vim-code-dark' " Theme codedark
 Plug 'sainnhe/everforest' " Theme everforest
@@ -113,6 +116,21 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Replace highlighted text in normal mode
+nnoremap <Leader>r :%s///g<Left><Left>
+nnoremap <Leader>rc :%s///gc<Left><Left><Left>
+" Replace highlighet text in visual mode
+vnoremap <Leader>r :%s///g<Left><Left>
+vnoremap <Leader>rc :%s///gc<Left><Left><Left>
+
+" Type a replacement term and press . to repeat the replacement again. Useful
+" for replacing a few instances of the term (comparable to multiple cursors).
+nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
+xnoremap <silent> s* "sy:let @/=@s<CR>cgn
+
+" Map ñ to turn highlighted text off
+nnoremap ñ :noh<CR>
 
 " Copy to system clipboard with Ctrl+Shift+c
 vnoremap <C-C> "+y
