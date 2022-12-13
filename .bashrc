@@ -123,3 +123,7 @@ export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
 export VIRTUALENVWRAPPER_VIRTUALENV=$(which virtualenv)
 export PROJECT_HOME=$HOME/pipprojects
 source $HOME/.local/bin/virtualenvwrapper.sh
+
+# Configure FZF.
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+export FZF_DEFAULT_OPTS="--color=dark"
