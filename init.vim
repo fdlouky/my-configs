@@ -13,6 +13,7 @@ set softtabstop=4
 set mouse=a " To use the mouse in the Vim editor
 set cursorline  " Horizontal line in cursor position
 
+:let mapleader=","
 
 call plug#begin()
 
