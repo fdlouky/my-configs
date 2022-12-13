@@ -11,7 +11,6 @@ set shiftwidth=4 " For shifting text left or righ
 set smarttab
 set softtabstop=4
 set mouse=a " To use the mouse in the Vim editor
-set colorcolumn=79 " To show vertical line in column 79
 set cursorline  " Horizontal line in cursor position
 
 
@@ -155,6 +154,7 @@ let g:blamer_enabled = 1
 " Specific configs por python files
 au BufNewFile,BufRead *.py
     \| set textwidth=79
+	\| set colorcolumn=79 " To show vertical line in column 79
     \| set expandtab
     \| set fileformat=unix
 
