@@ -129,3 +129,17 @@ bindkey '´' autosuggest-accept
 # Configure FZF.
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 export FZF_DEFAULT_OPTS="--color=dark"
+
+# History settings.
+export HISTFILE="${XDG_CACHE_HOME}/zsh/.history"
+export HISTTIMEFORMAT="%Y/%m/%d %H:%M:%S:   "
+export HISTSIZE=50000        # History lines stored in mememory.
+export SAVEHIST=50000        # History lines stored on disk.
+setopt INC_APPEND_HISTORY    # Immediately append commands to history file.
+setopt HIST_IGNORE_ALL_DUPS  # Never add duplicate entries.
+setopt HIST_IGNORE_SPACE     # Ignore commands that start with a space.
+setopt HIST_REDUCE_BLANKS    # Remove unnecessary blank lines.
+
+# Load aliases if they exist.
+[ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
+

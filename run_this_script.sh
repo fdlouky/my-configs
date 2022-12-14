@@ -25,6 +25,7 @@ ln -sf $dir/.bashrc $HOME/.bashrc
 ln -sf $dir/.zshrc $HOME/.zshrc
 ln -sf $dir/.p10k.zsh $HOME/.p10k.zsh
 ln -sf $dir/config $HOME/.config/terminator/config
+ln -sf $dir/.aliases $HOME/.aliases
 
 # Show trash in desktop and remove from dock
 gsettings set org.gnome.shell.extensions.ding show-trash true

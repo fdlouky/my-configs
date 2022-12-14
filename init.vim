@@ -31,6 +31,20 @@ Plug 'jiangmiao/auto-pairs' " Auto-close braces and scopes
 Plug 'jmcantrell/vim-virtualenv' " To show venv in vim-airline (bottom bar)
 Plug 'lukas-reineke/indent-blankline.nvim' " This plugin adds indentation guides to all lines (including empty lines)
 
+" Run a diff on 2 directories.
+Plug 'will133/vim-dirdiff'
+" Run a diff on 2 blocks of text.
+Plug 'AndrewRadev/linediff.vim'
+
+" Highlight which character to jump to when using horizontal movement keys.
+Plug 'unblevable/quick-scope'
+
+" Dim paragraphs above and below the active paragraph.
+Plug 'junegunn/limelight.vim'
+
+" A bunch of useful language related snippets (ultisnips is the engine).
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
 " Fold code
 Plug 'tmhedberg/SimpylFold'
 
@@ -67,6 +81,34 @@ Plug 'numirias/semshi'
 " Plug 'vim-python/python-syntax'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " After installing the pluging -> :TSInstall python
 
+" Languages and file types.
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'chr4/nginx.vim'
+Plug 'chrisbra/csv.vim'
+Plug 'ekalinin/dockerfile.vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'fatih/vim-go'
+Plug 'cespare/vim-toml', { 'branch': 'main' }
+Plug 'godlygeek/tabular' | Plug 'tpope/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'jvirtanen/vim-hcl'
+Plug 'lifepillar/pgsql.vim'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'stephpy/vim-yaml'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-liquid'
+Plug 'tpope/vim-rails'
+" Plug 'vim-python/python-syntax'
+Plug 'vim-ruby/vim-ruby'
+Plug 'wgwoods/vim-systemd-syntax'
+Plug 'towolf/vim-helm'
+Plug 'hashivim/vim-terraform'
+
 set encoding=UTF-8
 
 call plug#end()
@@ -90,6 +132,10 @@ colorscheme codedark
 
 " Airline theme
 let g:airline_theme = 'dark'
+
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
 
 " Highlight inlay type hints for python
 hi CocInlayHint ctermbg=0 ctermfg=8
@@ -129,6 +175,59 @@ xnoremap <Leader>rc :%s///gc<Left><Left><Left>
 " for replacing a few instances of the term (comparable to multiple cursors).
 nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> s* "sy:let @/=@s<CR>cgn
+
+" Prevent x and the delete key from overriding what's in the clipboard.
+noremap x "_x
+noremap X "_x
+noremap <Del> "_x
+
+" Prevent selecting and pasting from overwriting what you originally copied.
+xnoremap p pgvy
+
+" Keep cursor at the bottom of the visual selection after you yank it.
+vmap y ygv<Esc>
+
+" Source Vim config file.
+map <Leader>sv :source $MYVIMRC<CR>
+
+" Allow files to be saved as root when forgetting to start Vim using sudo.
+command Sw :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+" Toggle quickfix window.
+function! QuickFix_toggle()
+    for i in range(1, winnr('$'))
+        let bnum = winbufnr(i)
+        if getbufvar(bnum, '&buftype') == 'quickfix'
+            cclose
+            return
+        endif
+    endfor
+
+    copen
+endfunction
+nnoremap <silent> <Leader>c :call QuickFix_toggle()<CR>
+
+" Add all TODO items to the quickfix list relative to where you opened Vim.
+function! s:todo() abort
+  let entries = []
+  for cmd in ['git grep -niIw -e TODO -e FIXME 2> /dev/null',
+            \ 'grep -rniIw -e TODO -e FIXME . 2> /dev/null']
+    let lines = split(system(cmd), '\n')
+    if v:shell_error != 0 | continue | endif
+    for line in lines
+      let [fname, lno, text] = matchlist(line, '^\([^:]*\):\([^:]*\):\(.*\)')[1:3]
+      call add(entries, { 'filename': fname, 'lnum': lno, 'text': text })
+    endfor
+    break
+  endfor
+
+  if !empty(entries)
+    call setqflist(entries)
+    copen
+  endif
+endfunction
+
+command! Todo call s:todo()
 
 " .............................................................................
 " junegunn/fzf.vim
@@ -172,6 +271,17 @@ command! -bang -nargs=* Rg
   \ <q-args>, 1, fzf#vim#with_preview(), <bang>0)
 
 " .............................................................................
+" unblevable/quick-scope
+" .............................................................................
+
+" Trigger a highlight in the appropriate direction when pressing these keys.
+let g:qs_highlight_on_keys=['f', 'F', 't', 'T']
+
+" Only underline the highlights instead of using custom colors.
+highlight QuickScopePrimary gui=underline cterm=underline
+highlight QuickScopeSecondary gui=underline cterm=underline
+
+" .............................................................................
 " mhinz/vim-grepper
 " .............................................................................
 
@@ -197,6 +307,22 @@ xmap <Leader>R
      \<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 " .............................................................................
+" iamcco/markdown-preview.nvim
+" .............................................................................
+
+let g:mkdp_auto_close=0
+let g:mkdp_refresh_slow=1
+let g:mkdp_markdown_css=fnameescape($HOME).'/.local/lib/github-markdown-css/github-markdown.css'
+
+" .............................................................................
+" SirVer/ultisnips
+" .............................................................................
+
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" .............................................................................
+
 
 " Map ñ to turn highlighted text off
 nnoremap ñ :noh<CR>

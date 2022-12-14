@@ -127,3 +127,6 @@ source $HOME/.local/bin/virtualenvwrapper.sh
 # Configure FZF.
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 export FZF_DEFAULT_OPTS="--color=dark"
+
+# Load aliases if they exist.
+[ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
