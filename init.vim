@@ -144,6 +144,10 @@ hi CocInlayHint ctermbg=0 ctermfg=8
 " hi TabLineSel gui=NONE guibg=#3e4452 guifg=#abb2bf cterm=NONE term=NONE ctermfg=black ctermbg=white
 " hi BufferCurrent ctermfg=18 ctermbg=236 guifg=#d4d4d4 guibg=#1e1e1e " -> problems with icon background
 
+" Add 2 new lines to start paragraph
+nnoremap <leader>O o<ESC>O
+nnoremap <leader>o o<cr>
+
 " Exit insert mode
 inoremap jk <esc>
 inoremap kj <esc>
