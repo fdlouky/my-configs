@@ -3,17 +3,9 @@
 " :CocInstall coc-pyright: The main Python plugin I use
 " :CocCommand snippets.edit... FOR EACH FILE TYPE
 
-set number " Line number in cursor position
-set relativenumber " Relative line number
-set autoindent
-set tabstop=4
-set shiftwidth=4 " For shifting text left or righ
-set smarttab
-set softtabstop=4
-set mouse=a " To use the mouse in the Vim editor
-set cursorline  " Horizontal line in cursor position
-
-:let mapleader=","
+" -----------------------------------------------------------------------------
+" Plugins 
+" -----------------------------------------------------------------------------
 
 call plug#begin()
 
@@ -48,7 +40,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Fold code
 Plug 'tmhedberg/SimpylFold'
 
-" Modify * to also work with visuale selections
+" Modify * to also work with visual selections
 Plug 'nelstrom/vim-visual-star-search'
 
 " Themes (colorschemes)
@@ -103,15 +95,32 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-liquid'
 Plug 'tpope/vim-rails'
-" Plug 'vim-python/python-syntax'
 Plug 'vim-ruby/vim-ruby'
 Plug 'wgwoods/vim-systemd-syntax'
 Plug 'towolf/vim-helm'
 Plug 'hashivim/vim-terraform'
 
-set encoding=UTF-8
-
 call plug#end()
+
+" -----------------------------------------------------------------------------
+" settings  
+" -----------------------------------------------------------------------------
+:let mapleader=","
+
+set encoding=UTF-8
+set number " Line number in cursor position
+set relativenumber " Relative line number
+set autoindent
+set tabstop=4
+set shiftwidth=4 " For shifting text left or righ
+set smarttab
+set softtabstop=4
+set mouse=a " To use the mouse in the Vim editor
+set cursorline  " Horizontal line in cursor position
+
+" -----------------------------------------------------------------------------
+" theme and colors settings 
+" -----------------------------------------------------------------------------
 
 " Theme: codedark
 set background=dark
@@ -133,7 +142,7 @@ colorscheme codedark
 " Airline theme
 let g:airline_theme = 'dark'
 
-" Color name (:help cterm-colors) or ANSI code
+" Limelight -> Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 
@@ -144,9 +153,32 @@ hi CocInlayHint ctermbg=0 ctermfg=8
 " hi TabLineSel gui=NONE guibg=#3e4452 guifg=#abb2bf cterm=NONE term=NONE ctermfg=black ctermbg=white
 " hi BufferCurrent ctermfg=18 ctermbg=236 guifg=#d4d4d4 guibg=#1e1e1e " -> problems with icon background
 
+" For No Previews
+set completeopt-=preview
+
+" Gitlens
+let g:blamer_enabled = 1
+
+" Highlight all matching tokens under cursor -> coc-highlight
+autocmd CursorHold * silent call CocActionAsync('highlight')
+set updatetime=300 " Make coc-highlight faster
+
+" Tabout
+inoremap <expr> <Tab> search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<Tab>'
+
+" -----------------------------------------------------------------------------
+" keybindings, functions and commands 
+" -----------------------------------------------------------------------------
+
+" User defined command to format code
+command Format :call CocAction('format') " format document
+
+" Allow files to be saved as root when forgetting to start Vim using sudo.
+command Sw :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 " Add 2 new lines to start paragraph
 nnoremap <leader>O o<ESC>O
-nnoremap <leader>o o<cr>
+nnoremap <leader>o o<ESC>o
 
 " Exit insert mode
 inoremap jk <esc>
@@ -194,9 +226,6 @@ vmap y ygv<Esc>
 " Source Vim config file.
 map <Leader>sv :source $MYVIMRC<CR>
 
-" Allow files to be saved as root when forgetting to start Vim using sudo.
-command Sw :execute ':silent w !sudo tee % > /dev/null' | :edit!
-
 " Toggle quickfix window.
 function! QuickFix_toggle()
     for i in range(1, winnr('$'))
@@ -233,6 +262,24 @@ endfunction
 
 command! Todo call s:todo()
 
+
+" Map ñ to turn highlighted text off
+nnoremap ñ :noh<CR>
+
+" Copy to system clipboard with Ctrl+Shift+c
+vnoremap <C-C> "+y
+vnoremap <C-X> "+ygvd
+
+" Error and warning list. Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nnoremap <F8> :CocDiagnostic<CR>
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Tagbar
+nmap <F7> :TagbarToggle<CR>
+
+
 " .............................................................................
 " coc-git
 " .............................................................................
@@ -246,7 +293,7 @@ nmap ]c <Plug>(coc-git-nextconflict)
 " show chunk diff at current position
 nmap gs <Plug>(coc-git-chunkinfo)
 " show commit contains current position
-nmap gc <plug>(coc-git-commit)
+nmap gd <plug>(coc-git-commit)
 " undo chunk
 nmap gu :CocCommand git.chunkUndo<CR>
 " stage chunk
@@ -344,35 +391,21 @@ let g:mkdp_markdown_css=fnameescape($HOME).'/.local/lib/github-markdown-css/gith
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+
 " .............................................................................
+" preservim/nerdtree
+" ............................................................................
 
-
-" Map ñ to turn highlighted text off
-nnoremap ñ :noh<CR>
-
-" Copy to system clipboard with Ctrl+Shift+c
-vnoremap <C-C> "+y
-
-" NerdTree shortcuts and some icon configs
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <F12> :call CocAction('jumpDefinition', 'tab drop')<CR>
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 
-" Error and warning list. Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nnoremap <F8> :CocDiagnostic<CR>
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" .............................................................................
+" vim-airline/vim-airline
+" .............................................................................
 
-" Tagbar
-nmap <F7> :TagbarToggle<CR>
-
-" For No Previews
-set completeopt-=preview
-
-" Airline configs
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -385,13 +418,14 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-" Gitlens
-let g:blamer_enabled = 1
+" .............................................................................
+" python settings
+" .............................................................................
 
 " Specific configs por python files
 au BufNewFile,BufRead *.py
     \| set textwidth=79
-	\| set colorcolumn=79 " To show vertical line in column 79
+    \| set colorcolumn=79 " To show vertical line in column 79
     \| set expandtab
     \| set fileformat=unix
 
@@ -401,13 +435,6 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Show venv in airline
 let g:airline#extensions#virtualenv#enabled = 1
-
-" User defined commands
-command Format :call CocAction('format') " format document
-
-" Highlight all matching tokens under cursor -> coc-highlight
-autocmd CursorHold * silent call CocActionAsync('highlight')
-set updatetime=300 " Make coc-highlight faster
 
 " Config for autocompletion from https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#use-tab-or-custom-key-for-trigger-completion
 " Use <cr> to confirm completion
@@ -419,7 +446,11 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
-" Terminal Function
+
+" .............................................................................
+" terminal 
+" .............................................................................
+
 let g:term_buf = 0
 let g:term_win = 0
 function! TermToggle(height)
@@ -452,6 +483,9 @@ tnoremap <A-t> <C-\><C-n>:call TermToggle(6)<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap :q! <C-\><C-n>:q!<CR>
 
+" -----------------------------------------------------------------------------
+" romgrk/barbar.nvim
+" -----------------------------------------------------------------------------
 " barbar keymapping
 " Move to previous/next
 nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
@@ -495,5 +529,3 @@ nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
 " :BarbarEnable - enables barbar (enabled by default)
 " :BarbarDisable - very bad command, should never be used
 
-" Tabout
-inoremap <expr> <Tab> search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<Tab>'
