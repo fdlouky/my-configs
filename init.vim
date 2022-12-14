@@ -230,6 +230,25 @@ endfunction
 command! Todo call s:todo()
 
 " .............................................................................
+" coc-git
+" .............................................................................
+
+" navigate chunks of current buffer
+nmap [n <Plug>(coc-git-prevchunk)
+nmap ]n <Plug>(coc-git-nextchunk)
+" navigate conflicts of current buffer
+nmap [c <Plug>(coc-git-prevconflict)
+nmap ]c <Plug>(coc-git-nextconflict)
+" show chunk diff at current position
+nmap gs <Plug>(coc-git-chunkinfo)
+" show commit contains current position
+nmap gc <plug>(coc-git-commit)
+" undo chunk
+nmap gu :CocCommand git.chunkUndo<CR>
+" stage chunk
+nmap ga :CocCommand git.chunkStage<CR>
+
+" .............................................................................
 " junegunn/fzf.vim
 " .............................................................................
 
