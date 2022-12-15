@@ -179,6 +179,9 @@ inoremap <expr> <Tab> search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<Tab>'
 " keybindings, functions and commands 
 " -----------------------------------------------------------------------------
 
+" Remove marks also in shada
+nnoremap m<space> :delm!<CR> :wshada!<CR>
+
 " User defined command to format code
 command Format :call CocAction('format') " format document
 
