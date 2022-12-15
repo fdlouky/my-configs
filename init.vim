@@ -172,8 +172,6 @@ let g:blamer_enabled = 1
 autocmd CursorHold * silent call CocActionAsync('highlight')
 set updatetime=300 " Make coc-highlight faster
 
-" Tabout
-inoremap <expr> <Tab> search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<Tab>'
 
 " -----------------------------------------------------------------------------
 " keybindings, functions and commands 
@@ -554,4 +552,7 @@ nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
 " Other:
 " :BarbarEnable - enables barbar (enabled by default)
 " :BarbarDisable - very bad command, should never be used
+
+" Tabout
+inoremap <expr> <Tab> search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<Tab>'
 
