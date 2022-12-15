@@ -23,6 +23,9 @@ Plug 'jiangmiao/auto-pairs' " Auto-close braces and scopes
 Plug 'jmcantrell/vim-virtualenv' " To show venv in vim-airline (bottom bar)
 Plug 'lukas-reineke/indent-blankline.nvim' " This plugin adds indentation guides to all lines (including empty lines)
 
+" Vim signature to see marks in the left bar
+Plug 'kshenoy/vim-signature'
+
 " Dim inactive split
 Plug 'blueyed/vim-diminactive'
 
