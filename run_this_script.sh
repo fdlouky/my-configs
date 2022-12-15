@@ -31,6 +31,16 @@ ln -sf $dir/.aliases $HOME/.aliases
 gsettings set org.gnome.shell.extensions.ding show-trash true
 gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
 
+
+echoMessage "\nRemap capslock to ctrl?"
+select yn in "yes" "no"; do
+	case $yn in
+		yes ) dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']"
+			break;;
+		no ) break;;
+	esac
+done
+
 echoMessage "\nInstall Python and other tools?"
 select yn in "yes" "no"; do
 	case $yn in
