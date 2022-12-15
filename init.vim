@@ -23,6 +23,9 @@ Plug 'jiangmiao/auto-pairs' " Auto-close braces and scopes
 Plug 'jmcantrell/vim-virtualenv' " To show venv in vim-airline (bottom bar)
 Plug 'lukas-reineke/indent-blankline.nvim' " This plugin adds indentation guides to all lines (including empty lines)
 
+" Dim inactive split
+Plug 'blueyed/vim-diminactive'
+
 " Run a diff on 2 directories.
 Plug 'will133/vim-dirdiff'
 " Run a diff on 2 blocks of text.
@@ -118,6 +121,9 @@ set softtabstop=4
 set mouse=a " To use the mouse in the Vim editor
 set cursorline  " Horizontal line in cursor position
 
+" Background color for inactive split
+:hi ColorColumn ctermbg=0 guibg=#eee8d5
+
 " -----------------------------------------------------------------------------
 " theme and colors settings 
 " -----------------------------------------------------------------------------
@@ -172,6 +178,9 @@ inoremap <expr> <Tab> search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<Tab>'
 
 " User defined command to format code
 command Format :call CocAction('format') " format document
+
+" Open definition (example: a function definition)
+nnoremap <F12> :call CocAction('jumpDefinition', 'tab drop')<CR>
 
 " Allow files to be saved as root when forgetting to start Vim using sudo.
 command Sw :execute ':silent w !sudo tee % > /dev/null' | :edit!
@@ -279,6 +288,14 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Tagbar
 nmap <F7> :TagbarToggle<CR>
 
+" Resize split
+nnoremap + :res +3<CR>
+nnoremap - :res -3<CR>
+" Increase height (by 1): Ctrl-W +
+" Decrease height (by 1): Ctrl-W -
+" Increase width (by 1): Ctrl-W >
+" Decrease width (by 1): Ctrl-W 
+" Increase height by 5: 5 Ctrl-W +
 
 " .............................................................................
 " coc-git
@@ -398,7 +415,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <F12> :call CocAction('jumpDefinition', 'tab drop')<CR>
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 
