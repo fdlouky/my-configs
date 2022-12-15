@@ -191,6 +191,10 @@ command Sw :execute ':silent w !sudo tee % > /dev/null' | :edit!
 " Add 2 new lines to start paragraph
 nnoremap <leader>O o<ESC>O
 nnoremap <leader>o o<ESC>o
+" Use o and O but not entering to insert mode
+nnoremap o o<Esc>
+nnoremap O O<Esc>
+
 
 " Exit insert mode
 inoremap jk <esc>
@@ -416,7 +420,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " preservim/nerdtree
 " ............................................................................
 
-nnoremap <C-f> :NERDTreeFocus<CR>
+" nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
