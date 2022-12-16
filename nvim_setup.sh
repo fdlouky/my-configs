@@ -6,12 +6,15 @@ rm -rf $HOME/.config/nvim $HOME/.config/coc $HOME/.local/share/nvim $HOME/.cache
 
 # First tasks
 dir=$PWD
-mkdir -p $HOME/.config/nvim/after/plugin
+mkdir -p $HOME/.config/nvim
 nvim_configs=$HOME/.config/nvim
-nvim_after_directory=$nvim_configs/after/plugin
 ln -sf $dir/init.vim $nvim_configs/init.vim
 ln -sf $dir/coc-settings.json $nvim_configs/coc-settings.json
-ln -sf $dir/tabout.vim $nvim_after_directory/tabout.vim
+
+# Uncomment if you like tabout. I think it is not necessary in vim because of normal mode.
+# mkdir -p $nvim_configs/after/plugin
+# nvim_after_directory=$nvim_configs/after/plugin
+# ln -sf $dir/tabout.vim $nvim_after_directory/tabout.vim
 
 # Install nerd fonts
 mkdir -p $HOME/.local/share/fonts
