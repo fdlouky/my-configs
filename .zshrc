@@ -143,3 +143,4 @@ setopt HIST_REDUCE_BLANKS    # Remove unnecessary blank lines.
 # Load aliases if they exist.
 [ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
 
+. "$HOME/.cargo/env"
