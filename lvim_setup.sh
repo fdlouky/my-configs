@@ -17,9 +17,9 @@ npm install -g neovim
 
 # Install LunarVim
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) # install lunarvim
-git clone --branch python-ide https://github.com/LunarVim/starter.lvim.git /tmp/starter.lvim # python lunarvim starter pack
-/usr/bin/python -m pip install -r /tmp/starter.lvim/requirements.txt
-/usr/bin/python -m pip install kitty 
-cp /tmp/starter.lvim/config.lua $HOME/.config/lvim/config.lua
-cd $dir
-rm -rf /tmp/starter.lvim
+# git clone --branch python-ide https://github.com/LunarVim/starter.lvim.git /tmp/starter.lvim # python lunarvim starter pack
+# /usr/bin/python -m pip install -r /tmp/starter.lvim/requirements.txt
+# /usr/bin/python -m pip install kitty 
+# cp /tmp/starter.lvim/config.lua $HOME/.config/lvim/config.lua
+# cd $dir
+# rm -rf /tmp/starter.lvim
