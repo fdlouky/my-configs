@@ -70,6 +70,7 @@ select yn in "yes" "no"; do
 			sudo npm install -g npm
 			sudo npm install -g yarn
 			curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # install cargo (rust)
+			npm install -g neovim
 			break;;
 		no ) break;;
 	esac
@@ -89,6 +90,7 @@ select yn in "yes" "no"; do
 			sudo apt -y install black
 			pip3 install --upgrade pip
 			pip3 install virtualenv virtualenvwrapper
+			pip3 install neovim
 			source $HOME/.local/bin/virtualenvwrapper.sh
 			source $HOME/.bashrc
 			cp -f postmkvirtualenv $WORKON_HOME
