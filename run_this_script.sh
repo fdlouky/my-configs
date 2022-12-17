@@ -31,6 +31,13 @@ ln -sf $dir/.aliases $HOME/.aliases
 gsettings set org.gnome.shell.extensions.ding show-trash true
 gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
 
+# Install nerd fonts
+echoMessage "\nInstalling nerd fonts"
+mkdir -p $HOME/.local/share/fonts
+sudo apt install fonts-powerline
+cd $HOME/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" \
+	https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+
 
 echoMessage "\nRemap capslock to ctrl?"
 select yn in "yes" "no"; do
@@ -40,6 +47,34 @@ select yn in "yes" "no"; do
 		no ) break;;
 	esac
 done
+
+
+echoMessage "\nInstall node, npm, yarn and rust (cargo)?"
+select yn in "yes" "no"; do
+	case $yn in
+		yes)
+			# First uninstall nodejs and npm
+			sudo apt --purge remove nodejs npm
+			sudo apt clean
+			sudo apt autoclean
+			sudo apt -f install
+			sudo apt autoremove
+			sudo rm -rf /usr/lib/node_modules/npm/
+			# Now install all
+			sudo apt install -y nodejs
+			sudo apt install -fy npm
+			sudo npm install -g npm@latest
+			sudo npm cache clean -f
+			sudo npm install -g n
+			sudo n stable
+			sudo npm install -g npm
+			sudo npm install -g yarn
+			curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # install cargo (rust)
+			break;;
+		no ) break;;
+	esac
+done
+
 
 echoMessage "\nInstall Python and other tools?"
 select yn in "yes" "no"; do
@@ -90,7 +125,7 @@ select yn in "yes" "no"; do
 			sudo dpkg -i code.deb
 			sudo snap install intellij-idea-community --classic
 			sudo snap install pycharm-community --classic
-			sudo apt install -y copyq terminator tmux xclip flameshot vlc fzf ripgrep silversearcher-ag
+			sudo apt install -y copyq xsel terminator tmux xclip flameshot vlc fzf ripgrep silversearcher-ag exuberant-ctags bat
 			sudo snap install dbeaver-ce
 			sudo snap install --edge filezilla
 			sudo snap install slack --classic
