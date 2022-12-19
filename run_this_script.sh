@@ -32,14 +32,20 @@ gsettings set org.gnome.shell.extensions.ding show-trash true
 gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
 
 # Install nerd fonts
-echoMessage "\nInstalling nerd fonts"
-mkdir -p $HOME/.local/share/fonts
-sudo apt install fonts-powerline
-cd $HOME/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" \
-	https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
-curl -LO https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf
-curl -LO https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf
-fc-cache -fv
+echoMessage "\nInstall nerd fonts?"
+select yn in "yes" "no"; do
+	case $yn in
+		yes ) mkdir -p $HOME/.local/share/fonts
+			sudo apt install fonts-powerline
+			cd $HOME/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" \
+				https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+			curl -LO https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf
+			curl -LO https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf
+			fc-cache -fv
+			break;;
+		no ) break;;
+	esac
+done
 # fc-list | grep -i "Droid"
 
 
@@ -107,7 +113,7 @@ done
 echoMessage "\nSolve Wifi drivers? (Lenovo issue)"
 select yn in "yes" "no"; do
 	case $yn in
-		yes ) sudo apt install -y git linux-headers-generic build-essential dkms
+		yes ) cd && sudo apt install -y git linux-headers-generic build-essential dkms
 			git clone https://github.com/Mange/rtl8192eu-linux-driver
 			cd rtl8192eu-linux-driver
 			sudo dkms add .
@@ -204,14 +210,14 @@ done
 
 
 # Install and setup NeoVim
-echoMessage "\nChoose a Vim IDE to install and setup?"
-select yn in "yes" "no"; do
+echoMessage "\nChoose a Vim IDE to install and setup..."
+select yn in "Nvim" "Lvim" "none"; do
 	case $yn in
 		Nvim ) bash $dir/nvim_setup.sh
 			break;;
 		Lvim ) bash $dir/lvim_setup.sh
 			break;;
-		none of them ) break;;
+		none ) break;;
 	esac
 done
 
