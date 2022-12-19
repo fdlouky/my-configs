@@ -123,8 +123,8 @@ typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=true
 bindkey \^U backward-kill-line
 alias pip='noglob pip'
 
-bindkey 'ñ' forward-word
-bindkey '´' autosuggest-accept
+bindkey 'ñ' autosuggest-accept
+bindkey '´' forward-word
 
 # Configure FZF.
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
