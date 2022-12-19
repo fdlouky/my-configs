@@ -21,6 +21,7 @@ echoError() {
 my_user=$(whoami)
 dir=$PWD
 mkdir -p $HOME/pipprojects
+mkdir -p $HOME/.config/terminator
 ln -sf $dir/.bashrc $HOME/.bashrc
 ln -sf $dir/.zshrc $HOME/.zshrc
 ln -sf $dir/.p10k.zsh $HOME/.p10k.zsh
@@ -113,7 +114,7 @@ done
 echoMessage "\nSolve Wifi drivers? (Lenovo issue)"
 select yn in "yes" "no"; do
 	case $yn in
-		yes ) cd && sudo apt install -y git linux-headers-generic build-essential dkms
+		yes ) cd $HOME && sudo apt install -y git linux-headers-generic build-essential dkms
 			git clone https://github.com/Mange/rtl8192eu-linux-driver
 			cd rtl8192eu-linux-driver
 			sudo dkms add .
