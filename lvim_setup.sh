@@ -32,6 +32,13 @@ select yn in "yes" "no"; do
             git clone git@github.com:fdlouky/lvim.git /tmp/lvim
             cp -a /tmp/lvim/. $HOME/.config/lvim
             rm -rf /tmp/lvim
+            # install rust analyzer
+            mkdir -p $HOME/.local/bin
+            curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > $HOME/.local/bin/rust-analyzer
+            chmod +x $HOME/.local/bin/rust-analyzer
+            # install go
+            sudo snap install go --classic
+            sudo snap install golangci-lint gopls
             break;;
         no ) break;;
 	esac
