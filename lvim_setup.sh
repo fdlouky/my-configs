@@ -13,7 +13,6 @@ rm -rf $HOME/.config/lvim $HOME/.local/share/lvim $HOME/.cache/lvim
 curl -LO  https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.deb
 sudo apt install ./nvim-linux64.deb
 rm nvim-linux64.deb
-npm install -g neovim
 
 # Install LunarVim
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) # install lunarvim
