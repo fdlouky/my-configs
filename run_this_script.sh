@@ -53,34 +53,6 @@ select yn in "yes" "no"; do
 done
 
 
-echoMessage "\nInstall node, npm, yarn and rust (cargo)?"
-select yn in "yes" "no"; do
-	case $yn in
-		yes)
-			# First uninstall nodejs and npm
-			sudo apt --purge remove nodejs npm
-			sudo apt clean
-			sudo apt autoclean
-			sudo apt -f install
-			sudo apt autoremove
-			sudo rm -rf /usr/lib/node_modules/npm/
-			# Now install all
-			sudo apt install -y nodejs
-			sudo apt install -fy npm
-			sudo npm install -g npm@latest
-			sudo npm cache clean -f
-			sudo npm install -g n
-			sudo n stable
-			sudo npm install -g npm
-			sudo npm install -g yarn
-			curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # install cargo (rust)
-			npm install -g neovim
-			break;;
-		no ) break;;
-	esac
-done
-
-
 echoMessage "\nInstall Python and other tools?"
 select yn in "yes" "no"; do
 	case $yn in
@@ -104,6 +76,37 @@ select yn in "yes" "no"; do
 	esac
 done
 
+
+echoMessage "\nInstall node, npm, yarn and rust (cargo)?"
+select yn in "yes" "no"; do
+	case $yn in
+		yes)
+			# First uninstall nodejs and npm
+			sudo apt --purge remove nodejs npm
+			sudo apt clean
+			sudo apt autoclean
+			sudo apt -f install
+			sudo apt autoremove
+			sudo rm -rf /usr/lib/node_modules/npm/
+			sudo rm -rf /usr/local/lib/node_modules/npm
+			sudo rm -rf /usr/local/bin/node
+			# Now install all
+			sudo apt install -y nodejs
+			sudo apt install -fy npm
+			sudo npm install -g npm@latest
+			sudo npm cache clean -f
+			sudo npm install -g n
+			sudo n stable
+			sudo npm install -g npm
+			sudo npm install -g yarn
+			curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # install cargo (rust)
+			npm install -g neovim
+			break;;
+		no ) break;;
+	esac
+done
+
+
 echoMessage "\nSolve Wifi drivers? (Lenovo issue)"
 select yn in "yes" "no"; do
 	case $yn in
@@ -121,6 +124,7 @@ select yn in "yes" "no"; do
 		no ) break;;
 	esac
 done
+
 
 echoMessage "\nInstall basic tools?"
 select yn in "yes" "no"; do
@@ -143,6 +147,7 @@ select yn in "yes" "no"; do
 	esac
 done
 cd $dir
+
 
 echoMessage "\nInstall my favorite terminal?"
 select yn in "yes" "no"; do
@@ -235,6 +240,7 @@ select yn in "yes" "no"; do
 		no ) break;;
 	esac
 done
+
 
 # Create SSH to connect Github
 echoMessage "\nCreate SSH to connect Github or Bitbucket?"
