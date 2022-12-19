@@ -97,7 +97,7 @@ select yn in "yes" "no"; do
 			npm install -g yarn
 			curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # install cargo (rust)
 			npm install -g neovim
-      cargo install tree-sitter-cli
+			#cargo install tree-sitter-cli
 			break;;
 		no ) break;;
 	esac
