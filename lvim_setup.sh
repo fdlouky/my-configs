@@ -16,9 +16,17 @@ rm nvim-linux64.deb
 
 # Install LunarVim
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) # install lunarvim
+
+# Install python starter pack
 # git clone --branch python-ide https://github.com/LunarVim/starter.lvim.git /tmp/starter.lvim # python lunarvim starter pack
 # sed -i 's/ueberzug/kitty/g' /tmp/starter.lvim/requirements.txt
 # /usr/bin/python -m pip install -r /tmp/starter.lvim/requirements.txt
 # cp /tmp/starter.lvim/config.lua $HOME/.config/lvim/config.lua
 # cd $dir
 # rm -rf /tmp/starter.lvim
+
+# Install ChristianChiarulli lvim configuration
+/usr/bin/python -m pip install jupyterlab pynvim jupyter_client kitty Pillow cairosvg pnglatex plotly kaleido
+git clone https://github.com/ChristianChiarulli/lvim.git /tmp/lvim
+cp -rf /tmp/lvim/* $HOME/.config/lvim
+rm -rf /tmp/lvim
