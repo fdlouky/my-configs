@@ -60,7 +60,7 @@ select yn in "yes" "no"; do
 			echo | sudo add-apt-repository ppa:deadsnakes/ppa
 			sudo apt update -y && sudo apt upgrade -y
 			sudo apt install -y python3
-			sudo apt install -y screen python-is-python3 python3-pip git gitk curl linux-headers-generic build-essential dkms flake8 pylint make
+			sudo apt install -y screen python-is-python3 python3-pip git gitk curl linux-headers-generic build-essential libssl-dev dkms flake8 pylint make
 			git config --global user.name fdlouky
 			git config --global user.email fmdlouky@gmail.com
 			sudo apt -y install black
@@ -91,14 +91,10 @@ select yn in "yes" "no"; do
 			sudo rm -rf /usr/local/lib/node_modules/npm
 			sudo rm -rf /usr/local/bin/node
 			# Now install all
-			sudo apt install -y nodejs
-			sudo apt install -fy npm
-			sudo npm install -g npm@latest
-			sudo npm cache clean -f
-			sudo npm install -g n
-			sudo n stable
-			sudo npm install -g npm
-			sudo npm install -g yarn
+			curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash	
+			source ~/.zshrc
+			nvm install node
+			npm install -g yarn
 			curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # install cargo (rust)
 			npm install -g neovim
 			break;;
