@@ -73,8 +73,8 @@ select yn in "yes" "no"; do
 			pip3 install --upgrade pip
 			pip3 install virtualenv virtualenvwrapper
 			pip3 install neovim
-      pip3 install pynvim
-			source $HOME/.local/bin/virtualenvwrapper.sh
+      		pip3 install pynvim
+			bash $HOME/.local/bin/virtualenvwrapper.sh
 			source $HOME/.bashrc
 			cp -f postmkvirtualenv $WORKON_HOME
 			break;;
