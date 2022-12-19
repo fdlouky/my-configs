@@ -37,6 +37,10 @@ mkdir -p $HOME/.local/share/fonts
 sudo apt install fonts-powerline
 cd $HOME/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" \
 	https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+curl -LO https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf
+curl -LO https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf
+fc-cache -fv
+# fc-list | grep -i "Droid"
 
 
 echoMessage "\nRemap capslock to ctrl?"
@@ -91,6 +95,7 @@ select yn in "yes" "no"; do
 			pip3 install --upgrade pip
 			pip3 install virtualenv virtualenvwrapper
 			pip3 install neovim
+      pip3 install pynvim
 			source $HOME/.local/bin/virtualenvwrapper.sh
 			source $HOME/.bashrc
 			cp -f postmkvirtualenv $WORKON_HOME
