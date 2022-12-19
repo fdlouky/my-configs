@@ -139,6 +139,7 @@ select yn in "yes" "no"; do
 			sudo snap install slack --classic
 			echo | sudo add-apt-repository ppa:obsproject/obs-studio
 			sudo apt update && sudo apt install -y obs-studio
+      sudo apt install openjdk-11-jre -y
 			break;;
 		no ) break;;
 	esac
