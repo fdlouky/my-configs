@@ -26,7 +26,7 @@ bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/
 # rm -rf /tmp/starter.lvim
 
 # Install ChristianChiarulli lvim configuration
-/usr/bin/python -m pip install jupyterlab pynvim jupyter_client kitty Pillow cairosvg pnglatex plotly kaleido
-git clone https://github.com/ChristianChiarulli/lvim.git /tmp/lvim
-cp -rf /tmp/lvim/* $HOME/.config/lvim
-rm -rf /tmp/lvim
+# /usr/bin/python -m pip install jupyterlab pynvim jupyter_client kitty Pillow cairosvg pnglatex plotly kaleido
+# git clone https://github.com/ChristianChiarulli/lvim.git /tmp/lvim
+# cp -rf /tmp/lvim/* $HOME/.config/lvim
+# rm -rf /tmp/lvim
