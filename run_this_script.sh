@@ -42,11 +42,11 @@ select yn in "yes" "no"; do
 			curl -LO https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf
 			curl -LO https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf
 			fc-cache -fv
+			# fc-list | grep -i "Droid"
 			break;;
 		no ) break;;
 	esac
 done
-# fc-list | grep -i "Droid"
 
 
 echoMessage "\nRemap capslock to ctrl?"
