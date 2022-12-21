@@ -146,7 +146,12 @@ select yn in "yes" "no"; do
 			sudo snap install slack --classic
 			echo | sudo add-apt-repository ppa:obsproject/obs-studio
 			sudo apt update && sudo apt install -y obs-studio
-      sudo apt install openjdk-11-jre -y
+			sudo apt install openjdk-11-jre -y
+			wget https://www.virtualbox.org/download/oracle_vbox_2016.asc
+			cat oracle_vbox_2016.asc | gpg --dearmor | sudo tee /usr/share/keyrings/virtualbox.gpg > /dev/null 2>&1
+			sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/virtualbox.gpg] https://download.virtualbox.org/virtualbox/debian jammy contrib" >> /etc/apt/sources.list.d/virtualbox.list'
+			sudo apt update
+			sudo apt install virtualbox-7.0
 			break;;
 		no ) break;;
 	esac
