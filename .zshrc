@@ -159,3 +159,5 @@ bindkey -M viins '^F' history-incremental-pattern-search-forward
 
 bindkey 'ñ' autosuggest-accept
 bindkey '´' forward-word
+
+export SCREENDIR=$HOME/.screen
