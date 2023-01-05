@@ -123,8 +123,7 @@ typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=true
 bindkey \^U backward-kill-line
 alias pip='noglob pip'
 
-bindkey 'ñ' autosuggest-accept
-bindkey '´' forward-word
+
 
 # Configure FZF.
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
@@ -151,3 +150,12 @@ export NVM_DIR="$HOME/.nvm"
 
 # Enable vim mode
 bindkey -v
+# Search backwards and forwards with a pattern
+bindkey -M vicmd '/' history-incremental-pattern-search-backward
+bindkey -M vicmd '?' history-incremental-pattern-search-forward
+# set up for insert mode too
+bindkey -M viins '^R' history-incremental-pattern-search-backward
+bindkey -M viins '^F' history-incremental-pattern-search-forward
+
+bindkey 'ñ' autosuggest-accept
+bindkey '´' forward-word
